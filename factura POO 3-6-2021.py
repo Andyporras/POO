@@ -1,14 +1,17 @@
 class Factura:
+    numeroFactura=0  #varible clse
     def __init__(self):
-        self.numeroFactura=0
+        Factura.numeroFactura+=1
+        self.numeroFactura=Factura.numeroFactura
         self.fecha=""
         self.cliente=""
         self.totalFacturado=0
         self.totalImpuesto=0
         self.listaItem=[]
-
-    def crearFactura(self,numero,fecha,cliente):
-        self.numeroFactura=numero
+        #Factura.numeroFactura+=1
+        #self #variable instancia
+    def crearFactura(self,fecha,cliente):
+        #self.numeroFactura=numero
         self.fecha=fecha
         self.cliente=cliente
     def verNumfactura(self):
@@ -18,7 +21,7 @@ class Factura:
         self.listaItem+=[[producto,precioU,cantidad]]
 
     def verTotal(self):
-        subtotal=0
+        subtotal=1
         total=0
         impuesto=0
         for item in self.listaItem:
@@ -67,3 +70,48 @@ class Cuenta:
         mensaje+=f"Saldo Actual:  \t{self.saldoActual}\n"
 
         print(mensaje)
+
+
+
+
+
+
+class Veterinaria:
+    totalPerros=0
+    totalGatos=0
+    totalAves=0
+    
+    def __init__(self):
+        self.Tipo=""
+        self.Peso=0.0
+
+    def agregar(self,tipo,peso):
+        if(isinstance(peso,float)and peso>0):
+            if("perro"==tipo):
+                Veterinaria.totalPerros+=1
+                self.Tipo=tipo
+                self.Peso=peso
+            elif("gato"==tipo):
+                Veterinaria.totalGatos+=1
+               
+                self.Tipo=tipo
+                self.Peso=peso
+            elif("ave"==tipo):
+                
+                Veterinaria.totalAves+=1
+                self.Tipo=tipo
+                self.Peso=peso
+                
+    def mostrarDatos(self):
+        return f"Tipo: {self.Tipo} con un peso de: {self.Peso}"
+    def VerTotalPerros(self):
+        return f"Total de perros: {Veterinaria.totalPerros}"
+    def VerTotalGatos(self):
+        return f"Total de gatos: {Veterinaria.totalGatos}"
+    def VerTotalAves(self):
+        return f"Total de aves: {Veterinaria.totalAves}"
+
+    
+
+
+        
